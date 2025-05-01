@@ -89,8 +89,15 @@ void TestFunction(unsigned int n, const std::function<double(int)>& function, co
 
 int main()
 {
-	TestFunction(100000, [](unsigned int n) { return OofN(n); }, "O(n)", 30);
-	TestFunction(200000, [](unsigned int n) { return OofN(n); }, "O(n)", 30);
-	TestFunction(300000, [](unsigned int n) { return OofN(n); }, "O(n)", 30);
+	TestFunction(100000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(200000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(300000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(400000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(500000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(600000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(700000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(800000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(900000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction(1000000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
 	return 0;
 }
