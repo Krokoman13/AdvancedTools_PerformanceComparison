@@ -7,7 +7,7 @@
 
 double OofN(unsigned int n)
 {
-	double total = 0;
+	volatile double total = 0;
 
 	for (double i = 0; i < n; i++)
 	{
