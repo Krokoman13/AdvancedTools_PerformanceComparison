@@ -5,6 +5,7 @@
 #include <string>
 #include <functional>
 
+//O(n)
 double OofN(unsigned int n)
 {
 	volatile double total = 0;
@@ -19,6 +20,22 @@ double OofN(unsigned int n)
 		number = std::acos(number);
 		number = std::asin(number);
 		total += number;
+	}
+
+	return total;
+}
+
+//O(n^2)
+double ONsquared(const unsigned int n)
+{
+	volatile double total = 0;
+
+	for (unsigned int i = 0; i < n; i++)
+	{
+		for (unsigned int j = 0; j < i; j++)
+		{
+			total += i * j;
+		}
 	}
 
 	return total;
@@ -89,15 +106,15 @@ void TestFunction(unsigned int n, const std::function<double(int)>& function, co
 
 int main()
 {
-	TestFunction(100000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(200000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(300000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(400000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(500000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(600000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(700000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(800000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(900000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
-	TestFunction(1000000, [](unsigned int n) { return OofN(n); }, "OofN", 30);
+	TestFunction( 5000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction( 6000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction( 7000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction( 8000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction( 9000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction(10000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction(20000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction(30000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction(40000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction(50000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
 	return 0;
 }
