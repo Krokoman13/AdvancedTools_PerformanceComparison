@@ -7,22 +7,37 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Benchmarking", "Benchmarkin
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
+		Debug_Clang|x64 = Debug_Clang|x64
+		Debug_Clang|x86 = Debug_Clang|x86
+		MSVC_Debug|x64 = MSVC_Debug|x64
+		MSVC_Debug|x86 = MSVC_Debug|x86
+		MSVC_Release|x64 = MSVC_Release|x64
+		MSVC_Release|x86 = MSVC_Release|x86
+		Release_Clang|x64 = Release_Clang|x64
+		Release_Clang|x86 = Release_Clang|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug|x64.ActiveCfg = Debug|x64
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug|x64.Build.0 = Debug|x64
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug|x86.ActiveCfg = Debug|Win32
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug|x86.Build.0 = Debug|Win32
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release|x64.ActiveCfg = Release|x64
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release|x64.Build.0 = Release|x64
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release|x86.ActiveCfg = Release|Win32
-		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release|x86.Build.0 = Release|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug_Clang|x64.ActiveCfg = Clang_Debug|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug_Clang|x64.Build.0 = Clang_Debug|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug_Clang|x86.ActiveCfg = Clang_Debug|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Debug_Clang|x86.Build.0 = Clang_Debug|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Debug|x64.ActiveCfg = MSVC_Debug|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Debug|x64.Build.0 = MSVC_Debug|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Debug|x86.ActiveCfg = MSVC_Debug|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Debug|x86.Build.0 = MSVC_Debug|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Release|x64.ActiveCfg = MSVC_Release|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Release|x64.Build.0 = MSVC_Release|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Release|x86.ActiveCfg = MSVC_Release|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.MSVC_Release|x86.Build.0 = MSVC_Release|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release_Clang|x64.ActiveCfg = Clang_Release|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release_Clang|x64.Build.0 = Clang_Release|x64
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release_Clang|x86.ActiveCfg = Clang_Release|Win32
+		{2E4CB849-764A-4098-9E11-F0308FA70C89}.Release_Clang|x86.Build.0 = Clang_Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE713210-BC0D-4020-828B-4F72CEC93566}
 	EndGlobalSection
 EndGlobal

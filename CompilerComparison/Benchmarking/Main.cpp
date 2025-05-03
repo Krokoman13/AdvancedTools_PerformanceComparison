@@ -76,7 +76,7 @@ void TestFunction(unsigned int n, const std::function<double(int)>& function, co
 	std::cout << "Average per n: " << mean / n << "s (" << (mean - standardDeviation) / n << "s / " << (mean + standardDeviation) / n << "s)\n";
 	std::cout << "\n";
 
-	std::string filename = name + elementCountString + ".csv";
+	std::string filename = name + '_' + elementCountString + ".csv";
 	std::vector<std::string> fileLines;
 
 	std::ofstream file(filename);
