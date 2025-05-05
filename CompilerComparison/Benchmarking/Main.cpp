@@ -4,22 +4,26 @@
 #include <fstream>  
 #include <string>
 #include <functional>
+#include <filesystem>
 
 //O(log n)
-double Ologn(unsigned int n)
+double OlogN(unsigned int n)
 {
 	volatile double total = 0;
 
 	while (n > 1)
 	{
-		double number = std::sin(n);
-		number = std::cos(number);
-		number = std::pow(number, 2);
-		total += number;
-		number = std::sqrt(number);
-		number = std::acos(number);
-		number = std::asin(number);
-		total += number;
+		for (double x = 0; x < 400000; x++)
+		{
+			double number = std::sin(n);
+			number = std::cos(number);
+			number = std::pow(number, 2);
+			total += number;
+			number = std::sqrt(number);
+			number = std::acos(number);
+			number = std::asin(number);
+			total += number;
+		}
 
 		n /= 2;
 	}
@@ -34,14 +38,17 @@ double OofN(unsigned int n)
 
 	for (double i = 0; i < n; i++)
 	{
-		double number = std::sin(i);
-		number = std::cos(number);
-		number = std::pow(number, 2);
-		total += number;
-		number = std::sqrt(number);
-		number = std::acos(number);
-		number = std::asin(number);
-		total += number;
+		for (double x = 0; x < 200000; x++)
+		{
+			double number = std::sin(i);
+			number = std::cos(number);
+			number = std::pow(number, 2);
+			total += number;
+			number = std::sqrt(number);
+			number = std::acos(number);
+			number = std::asin(number);
+			total += number;
+		}
 	}
 
 	return total;
@@ -54,9 +61,19 @@ double ONsquared(const unsigned int n)
 
 	for (unsigned int i = 0; i < n; i++)
 	{
-		for (unsigned int j = 0; j < i; j++)
+		for (unsigned int j = 0; j < n; j++)
 		{
-			total += i * j;
+			for (unsigned int x = 0; x < 40000; x++)
+			{
+				double number = std::sin(i);
+				number = std::cos(number);
+				number = std::pow(number, 2);
+				total += number;
+				number = std::sqrt(number);
+				number = std::acos(number);
+				number = std::asin(number);
+				total += number;
+			}
 		}
 	}
 
@@ -94,18 +111,7 @@ void TestFunction(unsigned int n, const std::function<double(int)>& function, co
 	}
 	double standardDeviation = std::sqrt(totalDeviation / testCount);
 
-	unsigned int nDigits = 0;
-	{
-		unsigned int nCopy = n;
-		while (nCopy % 10 == 0)
-		{
-			nCopy /= 10;
-			nDigits++;
-		}
-	}
-
-	unsigned int base = n / std::pow(10, nDigits);
-	std::string elementCountString = std::to_string(base) + "x10^" + std::to_string(nDigits);
+	std::string elementCountString = std::to_string(n);
 
 	std::cout << "Amount of numbers: " << elementCountString << "\n";
 	std::cout << "Amount of test: " << testCount << "\n";
@@ -115,7 +121,12 @@ void TestFunction(unsigned int n, const std::function<double(int)>& function, co
 	std::cout << "Average per n: " << mean / n << "s (" << (mean - standardDeviation) / n << "s / " << (mean + standardDeviation) / n << "s)\n";
 	std::cout << "\n";
 
-	std::string filename = name + '_' + elementCountString + ".csv";
+
+
+	std::string folder = name;
+	std::filesystem::create_directories(folder);
+
+	std::string filename = folder + '/' + elementCountString + ".csv";
 	std::vector<std::string> fileLines;
 
 	std::ofstream file(filename);
@@ -128,15 +139,34 @@ void TestFunction(unsigned int n, const std::function<double(int)>& function, co
 
 int main()
 {
-	TestFunction( 5000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction( 6000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction( 7000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction( 8000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction( 9000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction(10000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction(20000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction(30000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction(40000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
-	TestFunction(50000, [](unsigned int n) { return ONsquared(n); }, "N^2", 30);
+	TestFunction(1, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(2, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(3, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(4, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(5, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(6, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(7, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(8, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+	TestFunction(9, [](unsigned int n) { return OlogN(n); },		"O(log N)",		30);
+
+	TestFunction(1, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(2, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(3, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(4, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(5, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(6, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(7, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(8, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+	TestFunction(9, [](unsigned int n) { return OofN(n); },			"O(N)",			30);
+
+	TestFunction(1, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(2, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(3, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(4, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(5, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(6, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(7, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(8, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
+	TestFunction(9, [](unsigned int n) { return ONsquared(n); },	"O(N^2)",		30);
 	return 0;
 }
