@@ -7,13 +7,14 @@
 #include <filesystem>
 
 //O(log n)
-double OlogN(unsigned int n)
+double OlogN(unsigned int n_a)
 {
 	volatile double total = 0;
+	double n = n_a;
 
 	while (n > 1)
 	{
-		for (double x = 0; x < 400000; x++)
+		for (double x = 0; x < 300000; x++)
 		{
 			double number = std::sin(n);
 			number = std::cos(number);
