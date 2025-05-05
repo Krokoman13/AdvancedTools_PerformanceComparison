@@ -5,6 +5,28 @@
 #include <string>
 #include <functional>
 
+//O(log n)
+double Ologn(unsigned int n)
+{
+	volatile double total = 0;
+
+	while (n > 1)
+	{
+		double number = std::sin(n);
+		number = std::cos(number);
+		number = std::pow(number, 2);
+		total += number;
+		number = std::sqrt(number);
+		number = std::acos(number);
+		number = std::asin(number);
+		total += number;
+
+		n /= 2;
+	}
+
+	return total;
+}
+
 //O(n)
 double OofN(unsigned int n)
 {
